@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "nostalgic_workbench",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Nostalgic Workbench",
+  "description": "A minecraft mod that brings back the legacy console edition to java edition",
   "authors": [
-    "Me!"
+    "LolzDEV"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/LolzDEV/nostalgic_workbench",
+    "sources": "https://github.com/LolzDEV/nostalgic_workbench"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "GPL-3.0",
+  "icon": "assets/nostalgic_workbench/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.lolzdev.nostalgic_workbench.Core"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "nostalgic_workbench.mixins.json"
   ],
 
   "depends": {
@@ -33,6 +33,5 @@
     "java": ">=16"
   },
   "suggests": {
-    "another-mod": "*"
   }
 }
