@@ -27,6 +27,10 @@ public class LegacyInventoryScreen extends HandledScreen<LegacyInventoryScreenHa
     }
 
     @Override
+    protected void drawForeground(MatrixStack matrices, int mouseX, int mouseY) {
+    }
+
+    @Override
     protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
@@ -34,7 +38,7 @@ public class LegacyInventoryScreen extends HandledScreen<LegacyInventoryScreenHa
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
         this.drawTexture(matrices, x, y, 0, 0, 175, 165);
-        drawEntity(x + 97, y + 75, 30, (float)(x + 51) - this.mouseX, (float)(y + 75 - 50) - this.mouseY, this.client.player);
+        drawEntity(x + 97, y + 72, 30, (float)(x + 51) - this.mouseX, (float)(y + 75 - 50) - this.mouseY, this.client.player);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.lolzdev.nostalgic_workbench;
 
+import com.lolzdev.nostalgic_workbench.client.OpenScreenPacket;
 import com.lolzdev.nostalgic_workbench.gui.LegacyInventoryScreen;
 import com.lolzdev.nostalgic_workbench.gui.LegacyInventoryScreenHandler;
 import net.fabricmc.api.ClientModInitializer;
@@ -11,11 +12,16 @@ import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
 
 @Environment(EnvType.CLIENT)
@@ -27,15 +33,15 @@ public class Client implements ClientModInitializer {
     public void onInitializeClient() {
 
         keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.nostalgic_workbench.inventory", // The translation key of the keybinding's name
-                InputUtil.Type.KEYSYM, // The type of the keybinding, KEYSYM for keyboard, MOUSE for mouse.
-                GLFW.GLFW_KEY_I, // The keycode of the key
-                "category.nostalgic_workbench" // The translation key of the keybinding's category.
+                "key.nostalgic_workbench.inventory",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_I,
+                "category.nostalgic_workbench"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (keyBinding.wasPressed()) {
-                client.openScreen(new LegacyInventoryScreen(new LegacyInventoryScreenHandler(6, client.player.getInventory()), client.player.getInventory(), new TranslatableText("container.legacy_inventory")));
+            if (keyBinding.wasPressed()) {
+                OpenScreenPacket.send();
             }
         });
 
