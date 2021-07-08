@@ -1,9 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.lolz.nostalgic_workbench.mixin",
+  "package": "com.lolzdev.nostalgic_workbench.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "CraftingTableMixin",
+    "ItemRendererMixin"
   ],
   "client": [
   ],

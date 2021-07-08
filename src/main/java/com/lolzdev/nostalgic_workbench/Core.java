@@ -1,6 +1,8 @@
 package com.lolzdev.nostalgic_workbench;
 
 import com.lolzdev.nostalgic_workbench.client.OpenScreenPacket;
+import com.lolzdev.nostalgic_workbench.gui.LegacyCraftingScreen;
+import com.lolzdev.nostalgic_workbench.gui.LegacyCraftingScreenHandler;
 import com.lolzdev.nostalgic_workbench.gui.LegacyInventoryScreenHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -12,11 +14,13 @@ public class Core implements ModInitializer {
 
     public static ScreenHandlerType<LegacyInventoryScreenHandler> LEGACY_INVENTORY_SCREEN_HANDLER;
 
-
+    public static ScreenHandlerType<LegacyCraftingScreenHandler> LEGACY_CRAFTING_SCREEN_HANDLER;
 
     @Override
     public void onInitialize() {
         ServerPlayNetworking.registerGlobalReceiver(OpenScreenPacket.ID, OpenScreenPacket::handle);
         LEGACY_INVENTORY_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier("nostalgic_workbench", "legacy_inventory"), LegacyInventoryScreenHandler::new);
+        LEGACY_CRAFTING_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier("nostalgic_workbench", "legacy_crafting"), LegacyCraftingScreenHandler::new);
+
     }
 }

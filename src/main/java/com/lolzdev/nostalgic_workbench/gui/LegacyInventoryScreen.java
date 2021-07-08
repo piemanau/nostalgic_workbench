@@ -50,13 +50,6 @@ public class LegacyInventoryScreen extends HandledScreen<LegacyInventoryScreenHa
         this.mouseY = (float)mouseY;
     }
 
-    @Override
-    protected void init() {
-        super.init();
-        // Center the title
-        titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
-    }
-
     public static void drawEntity(int x, int y, int size, float mouseX, float mouseY, LivingEntity entity) {
         float f = (float)Math.atan(mouseX / 40.0F);
         float g = (float)Math.atan(mouseY / 40.0F);
@@ -104,3 +97,5 @@ public class LegacyInventoryScreen extends HandledScreen<LegacyInventoryScreenHa
     }
 
 }
+
+
