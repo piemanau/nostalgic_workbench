@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "com.lolzdev.nostalgic_workbench.Core"
+    ],
+    "client": [
+      "com.lolzdev.nostalgic_workbench.Client"
     ]
   },
   "mixins": [
